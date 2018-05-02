@@ -27,6 +27,7 @@ Route::get('/auth0/callback', '\Auth0\Login\Auth0Controller@callback');
 Route::get('/contact', function () {
     return view('contact');
 });
+Route::post('/contact', 'ContactController@SendMessage');
 
 Route::get('/', 'ShopController@getHome');
 Route::get('/categories/{tree?}', 'ShopController@getProductOrCategory')->where('tree', '(.*)');
@@ -71,7 +72,9 @@ Route::get('/user/{user}', 'UserController@search');
 Route::prefix('api')->group(function () {
     Route::post('cart', 'CartController@addToCart');
     Route::get('clearcart', 'CartController@clearCart');
-    
     Route::post('checkout', 'CheckoutController@saveCheckout');
+
+    Route::post('question', 'QAController@create');
+    Route::post('answer', 'QAController@answerQuestion');
 
 });

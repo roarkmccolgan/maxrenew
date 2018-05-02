@@ -15,6 +15,8 @@ class Auth0Controller extends Controller
 
 	public function login()
 	{
+		session(['afterlogin' => url()->previous()]);
+		//dd(session('afterlogin'));
 		return \App::make('auth0')->login(null, null, ['scope' => 'openid profile email'], 'code');
 	}
 

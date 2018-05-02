@@ -77,59 +77,7 @@
 	<div class="mt-6 -mx-2">
 		<tabs>
 			<tab name="Q &amp; A" class="-mb-px mr-1">
-				<div class="">
-					<div class="">
-						<a href="#" class="text-max-secondary" @click.prevent="showAskQuestion=!showAskQuestion" v-text="showAskQuestion ? 'Hide':'Ask a question'"></a>
-					</div>
-					<form class="w-full mt-2" v-show="showAskQuestion">
-						<div class="md:flex md:flex-wrap md:-mx-2 md:items-center mb-4 md:-mx-4">
-							<div class="md:w-1/2 md:px-4">
-								<label class="block text-grey-darker mb-1 pr-4" for="inline-full-name">
-									Name
-								</label>
-								<input class="bg-grey-lighter appearance-none border-2 border-grey-light hover:border-max-secondary rounded w-full py-2 px-4 text-grey-darker" id="inline-full-name" type="text" placeholder="John Doe">
-							</div>
-							<div class="md:w-1/2 md:px-4">
-								<label class="block text-grey-darker mb-1 pr-4" for="inline-full-name">
-									Email
-								</label>
-								<input class="bg-grey-lighter appearance-none border-2 border-grey-light hover:border-max-secondary rounded w-full py-2 px-4 text-grey-darker" id="inline-full-name" type="email" placeholder="john@example.com">
-							</div>
-							<div class="md:w-full md:px-4 mt-2">
-								<label class="block text-grey-darker mb-1 pr-4" for="inline-username">
-									Question
-								</label>
-								<textarea class="bg-grey-lighter appearance-none border-2 border-grey-light hover:border-max-secondary rounded w-full py-2 px-4 text-grey-darker" id="question" name="question" placeholder="Your question"></textarea>
-							</div>
-						</div>
-						<div class="flex items-center justify-end mb-4">
-							<label class="w-1/2 sm:w-2/5 md:1/5 block text-grey font-bold text-right">
-								<input class="mr-2" type="checkbox">
-								<span class="text-sm">
-									Email me the answer
-								</span>
-							</label>
-							<div class="w-1/2 sm:w-1/5 text-right">
-								<button class="shadow bg-indigo-dark text-white font-bold py-2 px-4 rounded" type="button">
-									Ask Question
-								</button>
-							</div>
-						</div>
-					</form>
-					<hr class="border-t border-grey-light my-6">
-					<div class="px-4 py-2 rounded bg-grey-lighter text-lg mb-2 text-max-secondary">
-						Q. How easy is it to install?
-					</div>
-					<div class="px-4 rounded bg-white mb-6">
-						A. Very easy, you only need a spade and hacksaw, all plumbing parts are supplied with the kit
-					</div>
-					<div class="px-4 py-2 rounded bg-grey-lighter text-lg mb-2 text-max-secondary">
-						Q. I have a 2 bedroom house, would this product be suitable for my house
-					</div>
-					<div class="px-4 rounded bg-white mb-6">
-						A. Although this product would work, we recommend the smaller unit "Mr Grey Mini" this product is best suited for 3 bedroom houses or more.
-					</div>
-				</div>
+				<question-component :questions="product.questions" :product-id="product.id" :user="user"></question-component>
 			</tab>
 			@if($product->specs)
 			<tab name="Specifications">

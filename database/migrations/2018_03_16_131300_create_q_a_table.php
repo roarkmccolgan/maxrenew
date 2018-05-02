@@ -13,7 +13,7 @@ class CreateQATable extends Migration
      */
     public function up()
     {
-        Schema::create('q_a', function (Blueprint $table) {
+        Schema::create('q_a_s', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('parent_id')->unsigned()->nullable();
             $table->integer('product_id')->unsigned();
@@ -21,7 +21,7 @@ class CreateQATable extends Migration
             $table->string('email');
             $table->text('comment');
 
-            $table->foreign('parent_id')->references('id')->on('products')->onDelete('cascade');
+            $table->foreign('parent_id')->references('id')->on('q_a')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
             
             $table->timestamps();
@@ -35,6 +35,6 @@ class CreateQATable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('q_a');
+        Schema::dropIfExists('q_a_s');
     }
 }

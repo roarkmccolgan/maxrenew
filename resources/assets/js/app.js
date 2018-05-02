@@ -7,8 +7,7 @@
 
  require('./bootstrap');
 
- window.Vue = require('vue');
-
+window.Vue = require('vue');
 import InstantSearch from 'vue-instantsearch'
 import { createFromAlgoliaCredentials } from 'vue-instantsearch';
 import VueSweetalert2 from 'vue-sweetalert2';
@@ -39,6 +38,8 @@ import {Tabs, Tab} from 'vue-tabs-component';
 
  Vue.component('example-component', require('./components/ExampleComponent.vue'));
  var CartComponent = require('./components/CartComponent.vue');
+ var QuestionComponent = require('./components/QuestionComponent.vue');
+ var ContactComponent = require('./components/ContactComponent.vue');
  Vue.component('tabs', Tabs);
  Vue.component('tab', Tab);
 
@@ -57,6 +58,7 @@ import {Tabs, Tab} from 'vue-tabs-component';
             faAngleRight: faAngleRight,
             faCheck: faCheck,
         },
+        user: window.user ? window.user : false,
         showAskQuestion: false,
         product: {
             sku: window.product ? window.product.sku : false,
@@ -68,6 +70,7 @@ import {Tabs, Tab} from 'vue-tabs-component';
             display_price_install: false,
             path: window.product ? window.product.path : false,
             strapline: window.product ? window.product.strapline : false,
+            questions: window.product && window.product.questions ? window.product.questions : {},
             qty: 1,
             install: false,
         },
@@ -201,6 +204,8 @@ import {Tabs, Tab} from 'vue-tabs-component';
     components: {
         FontAwesomeIcon,
         CartComponent,
+        ContactComponent,
+        QuestionComponent,
     },
     methods: {
         clearCart: function(){

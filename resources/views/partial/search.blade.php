@@ -29,7 +29,7 @@
 				</div>
 			</div>
 		</ais-index>
-		@if (!Request::is('checkout'))
+	@if (!Request::is('checkout'))
 			@include('partial.cart')
 		@endif
 	</div>
