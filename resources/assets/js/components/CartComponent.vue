@@ -1,5 +1,5 @@
 <template>
-    <div class="relative">
+    <div class="relative order-0 sm:order-1 p-1">
         <button class="relative bg-max-secondary text-white whitespace-no-wrap font-bold py-2 px-4 border-b-4 hover:border-b-2 hover:border-t-2 border-teal-darker hover:border-max-secondary rounded" @click.prevent="showHideCart()">
             <font-awesome-icon :icon="icons.cart"></font-awesome-icon>
             <span class="hidden sm:inline-block text-sm">Your Cart</span>

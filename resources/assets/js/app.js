@@ -22,6 +22,7 @@ import faSquare from '@fortawesome/fontawesome-pro-regular/faSquare'
 import faCheckSquare from '@fortawesome/fontawesome-pro-regular/faCheckSquare'
 import faAngleRight from '@fortawesome/fontawesome-pro-regular/faAngleRight'
 import faCheck from '@fortawesome/fontawesome-pro-regular/faCheck'
+import { Carousel, Slide } from 'vue-carousel';
 
 import {Tabs, Tab} from 'vue-tabs-component';
 /**
@@ -206,6 +207,8 @@ import {Tabs, Tab} from 'vue-tabs-component';
         CartComponent,
         ContactComponent,
         QuestionComponent,
+        Carousel,
+        Slide
     },
     methods: {
         clearCart: function(){

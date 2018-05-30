@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
+<title>Max Renew - {{ $product->name }}</title>
 @parent
 
 @endsection

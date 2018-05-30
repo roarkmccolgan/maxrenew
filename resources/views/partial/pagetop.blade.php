@@ -2,10 +2,7 @@
 	<div class="container mx-auto flex items-center justify-between px-2 sm:px-0">
 		<div class="flex items-center">
 			<div class="pr-4 mr-4 text-xs sm:border-r sm:text-base">CALL NOW: <a class="no-underline text-max-secondary" href="tel:+27119181800">+27 (011) 918 1800</a></div>
-			<div class="hidden sm:block">Frequently Asked Questions</div>
-		</div>
-		<div class="hidden sm:block">
-			<em>Free Delivery on orders over R2000</em>
+			<div class="hidden sm:block">Optimise how you use water and power in your home</div>
 		</div>
 		<div class="font-normal text-sm">
 			@if($isLoggedIn)

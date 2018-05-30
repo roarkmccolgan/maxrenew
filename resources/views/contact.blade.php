@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('head')
+<title>Max Renew - Contact Us</title>
 @parent
 
 @endsection

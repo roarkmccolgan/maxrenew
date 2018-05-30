@@ -29,6 +29,10 @@ Route::get('/contact', function () {
 });
 Route::post('/contact', 'ContactController@SendMessage');
 
+Route::get('/terms', function(){
+	return view('terms');
+});
+
 Route::get('/', 'ShopController@getHome');
 Route::get('/categories/{tree?}', 'ShopController@getProductOrCategory')->where('tree', '(.*)');
 

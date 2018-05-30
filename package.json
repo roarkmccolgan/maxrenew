@@ -26,6 +26,7 @@
         "@fortawesome/vue-fontawesome": "0.0.22",
         "npm": "^5.7.1",
         "qs": "^6.5.1",
+        "vue-carousel": "^0.7.3",
         "vue-instantsearch": "^1.5.1",
         "vue-sweetalert2": "^1.2.4",
         "vue-tabs-component": "^1.4.0"
