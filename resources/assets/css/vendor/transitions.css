@@ -1,33 +1,33 @@
-/* purgecss ignore */
+/* purgecss start ignore */
 .fade-enter-active, .fade-leave-active {
   transition-property: opacity;
   transition-duration: .4s;
 }
-/* purgecss ignore */
+
 .fade-enter, .fade-leave-to {
   opacity: 0;
 }
-/* purgecss ignore */
+
 .accordian-enter-active, .accordian-leave-active {
   transition: max-height 0.6s ease-out;
 }
-/* purgecss ignore */
+
 .accordian-enter, .accordian-leave-to {
   max-height: 0;
 }
-/* purgecss ignore */
+
 .accordian-enter-to, .accordian-leave {
   max-height: 1200px;
 }
-/* purgecss ignore */
+
 .bounce-enter-active {
   animation: bounce-in .5s ease-out;
 }
-/* purgecss ignore */
+
 .bounce-leave-active {
   animation: bounce-in .5s ease-in reverse;
 }
-/* purgecss ignore */
+
 @keyframes bounce-in {
   0% {
     transform: scale(0);
@@ -39,15 +39,15 @@
     transform: scale(1);
   }
 }
-/* purgecss ignore */
+
 .component-bounce-enter-active {
   animation: bounce-in .3s;
 }
-/* purgecss ignore */
+
 .component-bounce-leave-active {
   animation: bounce-in .3s reverse;
 }
-/* purgecss ignore */
+
 @keyframes bounce-in {
   0% {
     transform: scale(0);
@@ -59,3 +59,4 @@
     transform: scale(1);
   }
 }
+/* purgecss end ignore */

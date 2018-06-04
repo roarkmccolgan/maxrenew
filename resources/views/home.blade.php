@@ -44,7 +44,7 @@
 					<a href="{{'/categories/'.$category->alias.'/'}}" class="no-underline">
 						<div class="flex items-center sm:flex-wrap bg-white border-t border-b sm:border sm:shadow p-2 hover:border-max-secondary">
 							<div class="w-32 sm:w-full"><img class="" src="{{ $category->getFirstMediaUrl('title', 'thumb') }}" alt=""></div>
-							<h4 class="text-max-primary uppercase sm:text-center">{{$category['name']}}</h4>
+							<h4 class="text-max-primary uppercase sm:text-center sm:flex-1 sm:my-8">{{$category['name']}}</h4>
 						</div>
 					</a>
 				</div>
