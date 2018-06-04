@@ -31,6 +31,6 @@ class SendOrder extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->view('emails.ordercreated');
+        return $this->subject('New Order on Max Renew')->view('emails.ordercreated');
     }
 }

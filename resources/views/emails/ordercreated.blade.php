@@ -402,161 +402,131 @@ p.center {
 								<tr>
 									<td class="content-cell">
 										<h1>Hi, Team</h1>
-										<p>There a new order has been placed on MaxRenew</p>
-										<table class="attribute-list" width="100%" cellpadding="0" cellspacing="0">
+										<p>A new order has been placed on MaxRenew</p>
+										
+										<table class="purchase" width="100%" cellpadding="0" cellspacing="0">
 											<tr>
-												<td class="attribute-list-container">
-													<table width="100%" cellpadding="0" cellspacing="0">
+												<td valign="top">
+													<h3>ORDER ID - {{ $order->id }}</h3>
+													<p>
+														{{ $order->contact->fname." ".$order->contact->lname }}<br/>
+														{{ $order->contact->email }}<br/>
+														{{ $order->contact->telephone }}<br/>
+														@if($order->contact->mobile)
+														{{ $order->contact->mobile }}
+														@endif
+													</p>
+												</td>
+												<td valign="top">
+													<h3 class="align-right">DATE - {{ $order->created_at }}</h3>
+												</td>
+											</tr>
+											<tr>
+												<td valign="top">
+													<h3>Billing Address</h3>
+													<p>
+														@if($order->contact->company)
+														{{ $order->contact->company }}<br/>
+														@endif
+														@if($order->contact->vat)
+														{{ $order->contact->vat }}<br/>
+														@endif
+														@if($order->contact->billing_building)
+														{{ $order->contact->billing_building }}<br/>
+														@endif
+														{{ $order->contact->billing_address1 }}<br/>
+														{{ $order->contact->billing_address2 }}<br/>
+														@if($order->contact->billing_address3 && $order->contact->billing_address3!==$order->contact->billing_city)
+														{{ $order->contact->billing_address3 }}<br/>
+														@endif
+														{{ $order->contact->billing_city }}<br/>
+														{{ $order->contact->billing_province }}<br/>
+														{{ $order->contact->billing_postal }}
+													</p>
+												</td>
+												<td valign="top" align="right">
+													<h3 class="align-right">Delivery Address</h3>
+													<p class="align-right">
+														@if($order->contact->delivery_building)
+														{{ $order->contact->delivery_building }}<br/>
+														@endif
+														{{ $order->contact->delivery_address1 }}<br/>
+														{{ $order->contact->delivery_address2 }}<br/>
+														@if($order->contact->delivery_address3 && $order->contact->delivery_address3!==$order->contact->delivery_city)
+														{{ $order->contact->delivery_address3 }}<br/>
+														@endif
+														{{ $order->contact->delivery_city }}<br/>
+														{{ $order->contact->delivery_province }}<br/>
+														{{ $order->contact->delivery_postal }}
+													</p>
+												</td>
+											</tr>
+											<tr>
+												<td colspan="2">
+													<table class="purchase_content" width="100%" cellpadding="0" cellspacing="0">
 														<tr>
-															<td class="attribute-list-item"><strong>Amount:</strong> @money($order->value,'ZAR')</td>
+															<th class="purchase_heading">
+																<p>Description</p>
+															</th>
+															<th class="purchase_heading">
+																<p class="align-right">Amount</p>
+															</th>
+														</tr>
+														@foreach($order->items as $item)
+														<tr>
+															<td width="80%" class="purchase_item"><strong>{{ $item->product->sku }}</strong> {{ $item->product->strapline }}</td>
+															<td class="align-right" width="20%" class="purchase_item">@money($item->product->price,'ZAR')</td>
+														</tr>
+														@endforeach
+														<tr>
+															<td width="80%" class="purchase_footer" valign="middle">
+																<p class="purchase_total purchase_total--label">Total</p>
+															</td>
+															<td width="20%" class="purchase_footer" valign="middle">
+																<p class="purchase_total">@money($order->value,'ZAR')</p>
+															</td>
 														</tr>
 													</table>
 												</td>
 											</tr>
 										</table>
-										<!-- Action -->
-                      <!-- <table class="body-action" align="center" width="100%" cellpadding="0" cellspacing="0">
-                        <tr>
-                          <td align="center">
-                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                              <tr>
-                                <td align="center">
-                                  <table border="0" cellspacing="0" cellpadding="0">
-                                    <tr>
-                                      <td>
-                                        <a href="http://maxrenew.co.za" class="button button--green" target="_blank">Pay this Invoice</a>
-                                      </td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                    </table> -->
-                    <table class="purchase" width="100%" cellpadding="0" cellspacing="0">
-                    	<tr>
-                    		<td valign="top">
-                    			<h3>ORDER ID - {{ $order->id }}</h3>
-                    			<p>
-                    				{{ $order->contact->fname." ".$order->contact->lname }}<br/>
-	                    			{{ $order->contact->email }}<br/>
-	                    			{{ $order->contact->telephone }}<br/>
-	                    			@if($order->contact->mobile)
-	                    			{{ $order->contact->mobile }}
-                    			    @endif
-                    			</p>
-                    		</td>
-                    		<td valign="top">
-                    			<h3 class="align-right">DATE - {{ $order->created_at }}</h3>
-                    		</td>
-            			</tr>
-            			<tr>
-                    		<td valign="top">
-                    			<h3>Billing Address</h3>
-                    			<p>
-	                    			@if($order->contact->company)
-	                    			{{ $order->contact->company }}<br/>
-	                    			@endif
-	                    			@if($order->contact->vat)
-	                    			{{ $order->contact->vat }}<br/>
-	                    			@endif
-	                    			@if($order->contact->billing_building)
-	                    			{{ $order->contact->billing_building }}<br/>
-	                    			@endif
-	                    			{{ $order->contact->billing_address1 }}<br/>
-	                    			{{ $order->contact->billing_address2 }}<br/>
-	                    			@if($order->contact->billing_address3 && $order->contact->billing_address3!==$order->contact->billing_city)
-	                    			{{ $order->contact->billing_address3 }}<br/>
-	                    			@endif
-	                    			{{ $order->contact->billing_city }}<br/>
-	                    			{{ $order->contact->billing_province }}<br/>
-	                    			{{ $order->contact->billing_postal }}
-	                    		</p>
-                    		</td>
-                    		<td valign="top" align="right">
-                    			<h3 class="align-right">Delivery Address</h3>
-                    			<p class="align-right">
-	                    			@if($order->contact->delivery_building)
-	                    			{{ $order->contact->delivery_building }}<br/>
-	                    			@endif
-	                    			{{ $order->contact->delivery_address1 }}<br/>
-	                    			{{ $order->contact->delivery_address2 }}<br/>
-	                    			@if($order->contact->delivery_address3 && $order->contact->delivery_address3!==$order->contact->delivery_city)
-	                    			{{ $order->contact->delivery_address3 }}<br/>
-	                    			@endif
-	                    			{{ $order->contact->delivery_city }}<br/>
-	                    			{{ $order->contact->delivery_province }}<br/>
-	                    			{{ $order->contact->delivery_postal }}
-	                    		</p>
-                    		</td>
-            			</tr>
-            			<tr>
-            				<td colspan="2">
-            					<table class="purchase_content" width="100%" cellpadding="0" cellspacing="0">
-            						<tr>
-            							<th class="purchase_heading">
-            								<p>Description</p>
-            							</th>
-            							<th class="purchase_heading">
-            								<p class="align-right">Amount</p>
-            							</th>
-            						</tr>
-            						@foreach($order->items as $item)
-            						<tr>
-            							<td width="80%" class="purchase_item">{{ $item->product->strapline }}</td>
-            							<td class="align-right" width="20%" class="purchase_item">@money($item->product->price,'ZAR')</td>
-            						</tr>
-            						@endforeach
-            						<tr>
-            							<td width="80%" class="purchase_footer" valign="middle">
-            								<p class="purchase_total purchase_total--label">Total</p>
-            							</td>
-            							<td width="20%" class="purchase_footer" valign="middle">
-            								<p class="purchase_total">@money($order->value,'ZAR')</p>
-            							</td>
-            						</tr>
-            					</table>
-            				</td>
-            			</tr>
-                    		</table>
-                    		<p>Cheers,
-                    			<br>The MaxRenew Team</p>
-                    			<!-- Sub copy -->
-                    			<table class="body-sub">
-                    				<tr>
-                    					<td>
-                    						<p class="sub">Generated at </p>
-                    						<p class="sub"><a href="https://maxrenew.co.za" target="_blank">maxrenew.co.za</a></p>
-                    					</td>
-                    				</tr>
-                    			</table>
-                    		</td>
-                    	</tr>
-                    </table>
-                </td>
-            </tr>
-            <tr>
-            	<td>
-            		<table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0">
-            			<tr>
-            				<td class="content-cell" align="center">
-            					<p class="sub align-center">&copy; {{ date('Y') }} MaxRenew. All rights reserved.</p>
-            					<p class="sub align-center">
-            						MaxRenew
-            						<br>222 14th Avenue,<br/>
-            						Anderbolt,<br/>
-            						Boksburg, Gauteng<br/>
-            						South Africa
-            					</p>
-            				</td>
-            			</tr>
-            		</table>
-            	</td>
-            </tr>
-        </table>
-    </td>
-</tr>
-</table>
-</body>
-</html>
+										<p>Cheers,
+											<br>The MaxRenew Team</p>
+											<!-- Sub copy -->
+											<table class="body-sub">
+												<tr>
+													<td>
+														<p class="sub">Generated at </p>
+														<p class="sub"><a href="https://maxrenew.co.za" target="_blank">maxrenew.co.za</a></p>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0">
+									<tr>
+										<td class="content-cell" align="center">
+											<p class="sub align-center">&copy; {{ date('Y') }} MaxRenew. All rights reserved.</p>
+											<p class="sub align-center">
+												MaxRenew
+												<br>222 14th Avenue,<br/>
+												Anderbolt,<br/>
+												Boksburg, Gauteng<br/>
+												South Africa
+											</p>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+	</html>
