@@ -33,7 +33,7 @@ class SendOrderNotification
             ['email'=>'solar@maximtrading.co.za','name'=>'Michael McMaster'],
             ['email'=>'Heath@maximtrading.co.za','name'=>'Heath McMaster'],
         ];
-        Mail::to()
+        Mail::to($addressess)
             ->queue(new SendOrder($event->order));
         }
 }
