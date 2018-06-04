@@ -2,6 +2,10 @@
 
 @section('head')
 <title>Max Renew - {{ $product->name }}</title>
+<meta name="description" content="{{ $product->seo_description }}">
+<meta name="keywords" content="{{ $product->seo_keywords }}">
+<meta name="author" content="Roark McColgan">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 @parent
 
 @endsection
@@ -117,7 +121,7 @@
 					@endif
 				</div>
 				<div class="w-2/3">
-					<div class="mx-4 flex flex-col h-full">
+					<div class="mx-4 flex flex-col">
 						<a href="/categories/{{ $catproduct->path }}/{{ $catproduct->alias }}" class="no-underline">
 							<h3 class="mb-2">{{$catproduct->name}}</h3>
 						</a>

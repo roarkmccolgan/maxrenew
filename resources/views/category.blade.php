@@ -2,6 +2,9 @@
 
 @section('head')
 <title>Max Renew - {{ $category['name'] }}</title>
+<meta name="description" content="{{ $category['seo_description'] }}">
+<meta name="keywords" content="{{ $category['seo_keywords'] }}">
+<meta name="author" content="Roark McColgan">
 @parent
 
 @endsection
