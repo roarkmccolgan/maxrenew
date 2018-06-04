@@ -27,7 +27,7 @@
 				</div>
 			</div>
 			<div class="sm:w-1/3 p-2 pt-8">
-				<div class="flex flex-col h-full ml-4">
+				<div class="flex flex-col ml-4">
 					<form action="/api/cart" method="post" class="mt-6" @submit.prevent="addToCart()">
 						<input type="hidden" value="" name="sku" v-model="product.sku">
 						<div class="font-bold text-4xl mb-2">
