@@ -14,20 +14,21 @@ class Product extends Model implements HasMedia
     public function registerMediaCollections()
     {
         $this
-            ->addMediaCollection('title')     
-            ->useDisk('media')
-            ->singleFile()
+            ->addMediaCollection('content');
+        $this
+            ->addMediaCollection('gallery')
             ->registerMediaConversions(function (Media $media) {
             $this
                 ->addMediaConversion('thumb')
-                ->width(200)
-                ->height(200);
-            $this
-                ->addMediaConversion('product')
                 ->width(400)
                 ->height(400);
-
-        });
+            });
+        $this
+            ->addMediaCollection('application');
+        $this
+            ->addMediaCollection('technical');
+        $this
+            ->addMediaCollection('specifications');
     }
 
 	public function getPathAttribute($value)

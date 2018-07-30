@@ -12,17 +12,19 @@ import InstantSearch from 'vue-instantsearch'
 import { createFromAlgoliaCredentials } from 'vue-instantsearch';
 import VueSweetalert2 from 'vue-sweetalert2';
 
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
-import faSearch from '@fortawesome/fontawesome-pro-regular/faSearch'
-import faTimes from '@fortawesome/fontawesome-pro-regular/faTimes'
-import faSync from '@fortawesome/fontawesome-pro-regular/faSync'
-import faShoppingCart from '@fortawesome/fontawesome-pro-regular/faShoppingCart'
-import faMousePointer from '@fortawesome/fontawesome-pro-regular/faMousePointer'
-import faSquare from '@fortawesome/fontawesome-pro-regular/faSquare'
-import faCheckSquare from '@fortawesome/fontawesome-pro-regular/faCheckSquare'
-import faAngleRight from '@fortawesome/fontawesome-pro-regular/faAngleRight'
-import faCheck from '@fortawesome/fontawesome-pro-regular/faCheck'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faSearch } from '@fortawesome/pro-regular-svg-icons/faSearch'
+import { faTimes } from '@fortawesome/pro-regular-svg-icons/faTimes'
+import { faSync } from '@fortawesome/pro-regular-svg-icons/faSync'
+import { faShoppingCart } from '@fortawesome/pro-regular-svg-icons/faShoppingCart'
+import { faMousePointer } from '@fortawesome/pro-regular-svg-icons/faMousePointer'
+import { faSquare } from '@fortawesome/pro-regular-svg-icons/faSquare'
+import { faCheckSquare } from '@fortawesome/pro-regular-svg-icons/faCheckSquare'
+import { faAngleRight } from '@fortawesome/pro-regular-svg-icons/faAngleRight'
+import { faCheck } from '@fortawesome/pro-regular-svg-icons/faCheck'
 import { Carousel, Slide } from 'vue-carousel';
+
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 import {Tabs, Tab} from 'vue-tabs-component';
 /**
@@ -145,33 +147,6 @@ import {Tabs, Tab} from 'vue-tabs-component';
                 },
                 2: {
                     required: {
-                        'billing_address1': {
-                            min: 9
-                        },
-                        'billing_address2': {
-                            min: 3
-                        },
-                        'billing_city': {
-                            min: 5
-                        },
-                        'billing_province': {
-                            min: 5
-                        },
-                        'billing_postal': {
-                            min: 3
-                        }
-                    },
-                    complete: false,
-                    errors: {
-                        'billing_address1': false,
-                        'billing_address2': false,
-                        'billing_city': false,
-                        'billing_province': false,
-                        'billing_postal': false,
-                    },
-                },
-                3: {
-                    required: {
                         'delivery_address1': {
                             min: 9
                         },
@@ -195,6 +170,33 @@ import {Tabs, Tab} from 'vue-tabs-component';
                         'delivery_city': false,
                         'delivery_province': false,
                         'delivery_postal': false,
+                    },
+                },
+                3: {
+                    required: {
+                        'billing_address1': {
+                            min: 9
+                        },
+                        'billing_address2': {
+                            min: 3
+                        },
+                        'billing_city': {
+                            min: 5
+                        },
+                        'billing_province': {
+                            min: 5
+                        },
+                        'billing_postal': {
+                            min: 3
+                        }
+                    },
+                    complete: false,
+                    errors: {
+                        'billing_address1': false,
+                        'billing_address2': false,
+                        'billing_city': false,
+                        'billing_province': false,
+                        'billing_postal': false,
                     },
                 },
             },
@@ -255,6 +257,7 @@ import {Tabs, Tab} from 'vue-tabs-component';
             }
         },
         checkStep: function(step){
+            console.log(step);
             for (var required in this.wizard.steps[step].required) {
                 this.validate(step, required);
             }
@@ -267,11 +270,12 @@ import {Tabs, Tab} from 'vue-tabs-component';
             }
         },
         setSame: function(event){
+            console.log(event.target.checked);
             if(event.target.checked){
                 var that = this;
-                this.wizard.delivery = this.wizard.billing;
+                this.wizard.billing = this.wizard.delivery;
             }else{
-                this.wizard.delivery = {'building': '', 'address1': '', 'address2': '', 'city': '', 'province': '', 'postal': '' };
+                this.wizard.billing = {'building': '', 'address1': '', 'address2': '', 'city': '', 'province': '', 'postal': '' };
             }
         },
         saveCheckout: function(step){
@@ -292,5 +296,59 @@ import {Tabs, Tab} from 'vue-tabs-component';
                 console.log(error);
             });
         },
+    },
+    mounted: function(){
+        var that = this;
+        if(this.$refs.autocomplete){
+            var componentForm = {
+                delivery_address1: 'short_name',
+                delivery_address2: 'long_name',
+                delivery_address3: 'long_name',
+                delivery_city: 'long_name',
+                delivery_province: 'long_name',
+                delivery_postal: 'long_name'
+            };
+            this.autocomplete = new google.maps.places.Autocomplete(
+                (this.$refs.autocomplete),
+                {
+                    types: ['geocode'],
+                    componentRestrictions: {country: "za"}
+                }
+            );
+            this.autocomplete.addListener('place_changed', () => {
+                let place = this.autocomplete.getPlace();
+                console.log(place);
+                for (var component in componentForm) {
+                    document.getElementById(component).value = '';
+                    document.getElementById(component).disabled = false;
+                }
+                var streetNumber = '';
+                var streetName = '';
+                for (var i = 0; i < place.address_components.length; i++) {
+                    var addressType = place.address_components[i].types[0];
+                    if (addressType == 'street_number') {
+                        streetNumber = place.address_components[i]['short_name'];
+                    }
+                    if (addressType == 'route') {
+                        streetName = place.address_components[i]['long_name'];
+                    }
+                    if (addressType == 'sublocality_level_1' || addressType == 'sublocality') {
+                        that.wizard.delivery.address2 = place.address_components[i]['long_name'];
+                    }
+                    if (addressType == 'locality' || addressType == 'political') {
+                        that.wizard.delivery.city = place.address_components[i]['long_name'];
+                    }
+                    if (addressType == 'administrative_area_level_1') {
+                        that.wizard.delivery.province = place.address_components[i]['long_name'];
+                    }
+                    if (addressType == 'postal_code') {
+                        that.wizard.delivery.postal = place.address_components[i]['long_name'];
+                    }
+                }
+                that.wizard.delivery.address1 = streetNumber+' '+streetName;
+            });
+        }else{
+            console.log('noref')
+        }
     }
 });

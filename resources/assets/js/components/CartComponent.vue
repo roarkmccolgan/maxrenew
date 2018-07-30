@@ -40,9 +40,13 @@
 </template>
 
 <script>
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
-import faShoppingCart from '@fortawesome/fontawesome-pro-regular/faShoppingCart'
-import faSync from '@fortawesome/fontawesome-pro-regular/faSync'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faShoppingCart } from '@fortawesome/pro-regular-svg-icons/faShoppingCart'
+import { faSync } from '@fortawesome/pro-regular-svg-icons/faSync'
+
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+
 export default {
     props: ['cart'],
     data: function() {

@@ -1,5 +1,19 @@
 <?php
 return [
+	'production_order_emails' => [
+		['email'=>'roarkmccolgan@gmail.com','name'=>'Roark McColgan'],
+        ['email'=>'Heath@maximtrading.co.za','name'=>'Heath McMaster'],
+	],
+	'local_order_emails' => [
+		['email'=>'roarkmccolgan@gmail.com','name'=>'Roark McColgan'],
+	],
+	'production_question_emails' => [
+		['email'=>'roarkmccolgan@gmail.com','name'=>'Roark McColgan'],
+        ['email'=>'Heath@maximtrading.co.za','name'=>'Heath McMaster'],
+	],
+	'local_question_emails' => [
+		['email'=>'roarkmccolgan@gmail.com','name'=>'Roark McColgan'],
+	],
 	'categories' => [
 		'grey_water' => [
 			'alias' => 'grey_water',

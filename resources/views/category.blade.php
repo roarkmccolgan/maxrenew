@@ -11,13 +11,13 @@
 @section('body')
 {{-- @includeWhen($pagetype == 'content', 'patial.mainmenu') --}}
 <div class="container flex-1 mx-auto pb-8">
-	<div class="mt-4 p-4 category md:flex md:-mx-2">
-		<div class="md:w-1/3 px-2">
-			@if($category->hasMedia('title'))
-			<img src="{{ $category->getFirstMediaUrl('title', 'category') }}" alt="Image of {{ $category['name'] }}">
-			@endif
+	<div class="mt-4 category sm:flex sm:-mx-2">
+		@if($category->hasMedia('title'))
+		<div class="sm:w-1/3 px-2">
+			<img src="{{ $category->getFirstMediaUrl('title', 'category') }}" alt="Image of {{ $category['name'] }}">	
 		</div>
-		<div class="md:w-2/3 px-2">
+		@endif
+		<div class="sm:flex-1 px-2">
 			<h1 class="mb-2">{{ $category['name'] }}</h1>
 			{!! $category['description'] !!}
 		</div>

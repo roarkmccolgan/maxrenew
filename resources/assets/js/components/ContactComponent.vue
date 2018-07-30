@@ -99,9 +99,11 @@
 <script>
 import Qs from 'qs'
 window.Qs = Qs;
-import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
-import faSync from '@fortawesome/fontawesome-pro-regular/faSync'
-import faEnvelope from '@fortawesome/fontawesome-pro-regular/faEnvelope'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faSync } from '@fortawesome/pro-regular-svg-icons/faSync'
+import { faEnvelope } from '@fortawesome/pro-regular-svg-icons/faEnvelope'
+
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 export default {
     props: [],

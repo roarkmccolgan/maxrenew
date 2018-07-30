@@ -144,52 +144,65 @@
 						</div>
 					</transition>
 					<div class="p-4 -mx-4 flex items-center text-white border-t border-b border-white" :class="[wizard.currentStep == 2 ? 'bg-max-secondary' : 'bg-grey']">
-						<h4 class="flex-1">Billing Info</h4>
+						<h4 class="flex-1">Delivery Info</h4>
 						<a href="#" class="text-indigo-dark" @click.prevent="wizard.currentStep=2" v-if="wizard.complete">edit</a>
 					</div>
 					<transition name="accordian">
 						<div class="overflow-hidden h-auto" v-show="wizard.currentStep==2" key="2">
 							<div class="-mx-3 md:flex md:flex-wrap my-6">
+								<div class="w-full px-3 bg-indigo-lightest">
+									<div class="-mx-3 md:flex md:flex-wrap my-2 px-6">
+										<label class="w-full text-sm mb-2" for="addlookup">
+											Lookup your address
+										</label>
+										<input ref="autocomplete" 
+									        placeholder="Search" 
+									        class="px-6 py-3 mb-2 appearance-none block w-full bg-grey-lighter text-max-primary rounded"
+									        onfocus="value = ''"
+									        autocomplete="false" 
+									        type="text" />
+									</div>
+								</div>
 								<div class="lg:w-full px-3 mb-4">
 									<label class="block tracking-wide text-max-primary text-xs font-bold mb-2" for="address1">
 										Address Line 1 *
 									</label>
-									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[2].errors.address1 ? 'bg-red-lightest' : '']" id="billing_address1" name="billing[address1]" type="text" placeholder="" @blur="validate(2,'billing_address1')" v-model="wizard.billing.address1">
-									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.address1">Please supply your Address Line 1.</p>
+									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[3].errors.delivery_address1 ? 'bg-red-lightest' : '']" id="delivery_address1" name="delivery[address1]" type="text" placeholder="" @blur="validate(3,'delivery_address1')" v-model="wizard.delivery.address1">
+									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.delivery_address1">Please supply your Address Line 1.</p>
 								</div>
 								<div class="lg:w-1/2 px-3 mb-4">
 									<label class="block tracking-wide text-max-primary text-xs font-bold mb-2" for="address2">
 										Address Line 2 *
 									</label>
-									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[2].errors.address2 ? 'bg-red-lightest' : '']" id="billing_address2" name="billing[address2]" type="text" placeholder="" @blur="validate(2,'billing_address2')" v-model="wizard.billing.address2">
-									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.address2">Please supply your Address Line 2.</p>
+									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[3].errors.delivery_address2 ? 'bg-red-lightest' : '']" id="delivery_address2" name="delivery[address2]" type="text" placeholder="" @blur="validate(3,'delivery_address2')" v-model="wizard.delivery.address2">
+									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.delivery_address2">Please supply your Address Line 2.</p>
 								</div>
 								<div class="lg:w-1/2 px-3 mb-4">
 									<label class="block tracking-wide text-max-primary text-xs font-bold mb-2" for="address3">
 										Address Line 3
 									</label>
-									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" id="billing_address3" name="billing[address3]" type="text" placeholder="" v-model="wizard.billing.address3">
+									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" id="delivery_address3" name="delivery[address3]" type="text" placeholder="" v-model="wizard.delivery.address3">
 								</div>
 								<div class="lg:w-1/2 px-3 mb-4">
 									<label class="block tracking-wide text-max-primary text-xs font-bold mb-2" for="city">
 										City *
 									</label>
-									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[2].errors.city ? 'bg-red-lightest' : '']" id="billing_city" name="billing[city]" type="text" placeholder="" @blur="validate(2,'billing_city')" v-model="wizard.billing.city">
-									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.city">Please supply your City.</p>
+									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[3].errors.delivery_city ? 'bg-red-lightest' : '']" id="delivery_city" name="delivery[city]" type="text" placeholder="" @blur="validate(3,'delivery_city')" v-model="wizard.delivery.city">
+									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.delivery_city">Please supply your City.</p>
 								</div>
 								<div class="lg:w-1/2 px-3 mb-4">
 									<label class="block tracking-wide text-max-primary text-xs font-bold mb-2" for="province">
 										Province *
 									</label>
-									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[2].errors.province ? 'bg-red-lightest' : '']" id="billing_province" name="billing[province]" type="text" placeholder="" @blur="validate(2,'billing_province')" v-model="wizard.billing.province">
-									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.province">Please supply your Province.</p>
+									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[3].errors.delivery_province ? 'bg-red-lightest' : '']" id="delivery_province" name="delivery[province]" type="text" placeholder="" @blur="validate(3,'delivery_province')" v-model="wizard.delivery.province">
+									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.delivery_province">Please supply your Province.</p>
 								</div>
 								<div class="lg:w-1/2 px-3 mb-4">
 									<label class="block tracking-wide text-max-primary text-xs font-bold mb-2" for="postal">
 										Postal Code *
 									</label>
-									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[2].errors.postal ? 'bg-red-lightest' : '']" id="billing_postal" name="billing[postal]" type="text" placeholder="" @blur="validate(2,'billing_postal')" v-model="wizard.billing.postal">
-									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.postal">Please supply your Postal Code.</p>
+									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[3].errors.delivery_postal ? 'bg-red-lightest' : '']" id="delivery_postal" name="delivery[postal]" type="text" placeholder="" @blur="validate(3,'delivery_postal')" v-model="wizard.delivery.postal">
+									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.delivery_postal">Please supply your Postal Code.</p>
 								</div>
 							</div>
 							<div class="-mx-3 mb-2">
@@ -207,7 +220,7 @@
 						</div>
 					</transition>
 					<div class="p-4 -mx-4 flex items-center text-white border-t border-b border-white" :class="[wizard.currentStep == 3 ? 'bg-max-secondary' : 'bg-grey']">
-						<h4 class="flex-1">Delivery Info</h4>
+						<h4 class="flex-1">Billing Info</h4>
 						<a href="#" class="text-indigo-dark" @click.prevent="wizard.currentStep=3" v-if="wizard.complete">edit</a>
 					</div>
 					<transition name="accordian">
@@ -233,42 +246,42 @@
 									<label class="block tracking-wide text-max-primary text-xs font-bold mb-2" for="address1">
 										Address Line 1 *
 									</label>
-									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[3].errors.address1 ? 'bg-red-lightest' : '']" id="delivery_address1" name="delivery[address1]" type="text" placeholder="" @blur="validate(3,'delivery_address1')" v-model="wizard.delivery.address1">
-									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.address1">Please supply your Address Line 1.</p>
+									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[2].errors.billing_address1 ? 'bg-red-lightest' : '']" id="billing_address1" name="billing[address1]" type="text" placeholder="" @blur="validate(2,'billing_address1')" v-model="wizard.billing.address1">
+									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.billing_address1">Please supply your Address Line 1.</p>
 								</div>
 								<div class="lg:w-1/2 px-3 mb-4">
 									<label class="block tracking-wide text-max-primary text-xs font-bold mb-2" for="address2">
 										Address Line 2 *
 									</label>
-									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[3].errors.address2 ? 'bg-red-lightest' : '']" id="delivery_address2" name="delivery[address2]" type="text" placeholder="" @blur="validate(3,'delivery_address2')" v-model="wizard.delivery.address2">
-									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.address2">Please supply your Address Line 2.</p>
+									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[2].errors.billing_address2 ? 'bg-red-lightest' : '']" id="billing_address2" name="billing[address2]" type="text" placeholder="" @blur="validate(2,'billing_address2')" v-model="wizard.billing.address2">
+									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.billing_address2">Please supply your Address Line 2.</p>
 								</div>
 								<div class="lg:w-1/2 px-3 mb-4">
 									<label class="block tracking-wide text-max-primary text-xs font-bold mb-2" for="address3">
 										Address Line 3
 									</label>
-									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" id="delivery_address3" name="delivery[address3]" type="text" placeholder="" v-model="wizard.delivery.address3">
+									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" id="billing_address3" name="billing[address3]" type="text" placeholder="" v-model="wizard.billing.address3">
 								</div>
 								<div class="lg:w-1/2 px-3 mb-4">
 									<label class="block tracking-wide text-max-primary text-xs font-bold mb-2" for="city">
 										City *
 									</label>
-									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[3].errors.city ? 'bg-red-lightest' : '']" id="delivery_city" name="delivery[city]" type="text" placeholder="" @blur="validate(3,'delivery_city')" v-model="wizard.delivery.city">
-									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.city">Please supply your City.</p>
+									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[2].errors.billing_city ? 'bg-red-lightest' : '']" id="billing_city" name="billing[city]" type="text" placeholder="" @blur="validate(2,'billing_city')" v-model="wizard.billing.city">
+									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.billing_city">Please supply your City.</p>
 								</div>
 								<div class="lg:w-1/2 px-3 mb-4">
 									<label class="block tracking-wide text-max-primary text-xs font-bold mb-2" for="province">
 										Province *
 									</label>
-									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[3].errors.province ? 'bg-red-lightest' : '']" id="delivery_province" name="delivery[province]" type="text" placeholder="" @blur="validate(3,'delivery_province')" v-model="wizard.delivery.province">
-									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.province">Please supply your Province.</p>
+									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[2].errors.billing_province ? 'bg-red-lightest' : '']" id="billing_province" name="billing[province]" type="text" placeholder="" @blur="validate(2,'billing_province')" v-model="wizard.billing.province">
+									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.billing_province">Please supply your Province.</p>
 								</div>
 								<div class="lg:w-1/2 px-3 mb-4">
 									<label class="block tracking-wide text-max-primary text-xs font-bold mb-2" for="postal">
 										Postal Code *
 									</label>
-									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[3].errors.postal ? 'bg-red-lightest' : '']" id="delivery_postal" name="delivery[postal]" type="text" placeholder="" @blur="validate(3,'delivery_postal')" v-model="wizard.delivery.postal">
-									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.postal">Please supply your Postal Code.</p>
+									<input class="appearance-none block w-full bg-grey-lighter text-max-primary rounded py-3 px-4 mb-2" :class="[wizard.steps[2].errors.billing_postal ? 'bg-red-lightest' : '']" id="billing_postal" name="billing[postal]" type="text" placeholder="" @blur="validate(2,'billing_postal')" v-model="wizard.billing.postal">
+									<p class="text-red-light text-xs italic" v-show="wizard.steps[2].errors.billing_postal">Please supply your Postal Code.</p>
 								</div>
 							</div>
 							<div class="-mx-3 mb-2">

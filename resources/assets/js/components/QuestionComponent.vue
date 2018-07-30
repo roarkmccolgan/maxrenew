@@ -76,8 +76,11 @@
 </template>
 
 <script>
-    import FontAwesomeIcon from '@fortawesome/vue-fontawesome'
-    import faSync from '@fortawesome/fontawesome-pro-regular/faSync'
+    import { library } from '@fortawesome/fontawesome-svg-core'
+    import { faSync } from '@fortawesome/pro-regular-svg-icons/faSync'
+
+    import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
     export default {
         props: ['questions','productId', 'user'],
         data: function() {

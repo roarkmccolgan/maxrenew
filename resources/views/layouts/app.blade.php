@@ -19,6 +19,8 @@
 </div>
 @stack('scripts')
 @include('partial.jsvars')
+<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyDe0rHvuTf_URjbbhTL88oyhQb8sVj0dNA&libraries=places"></script>
 <script src="{{ mix('js/app.js') }}"></script>
+
 </body>
 </html>

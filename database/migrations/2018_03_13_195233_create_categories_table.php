@@ -18,6 +18,11 @@ class CreateCategoriesTable extends Migration
             $table->string('name');
             $table->string('alias')->unique();
             $table->text('description')->nullable();
+            
+            $table->string('seo_title')->nullable();
+            $table->text('seo_keywords')->nullable();
+            $table->text('seo_description')->nullable();
+
             $table->integer('parent_id')->unsigned()->nullable();
 
             $table->foreign('parent_id')->references('id')->on('categories');

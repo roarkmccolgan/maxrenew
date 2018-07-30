@@ -28,11 +28,7 @@ class SendOrderNotification
      */
     public function handle(OrderCreated $event)
     {
-        $addressess = [
-            ['email'=>'roarkmccolgan@gmail.com','name'=>'Roark McColgan'],
-            ['email'=>'solar@maximtrading.co.za','name'=>'Michael McMaster'],
-            ['email'=>'Heath@maximtrading.co.za','name'=>'Heath McMaster'],
-        ];
+        $addressess = config('maxrenew.'.env('APP_ENV','local').'_order_emails');
         Mail::to($addressess)
             ->queue(new SendOrder($event->order));
         }

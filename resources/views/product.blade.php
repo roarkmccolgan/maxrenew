@@ -11,18 +11,20 @@
 @endsection
 @section('body')
 {{-- @includeWhen($pagetype == 'content', 'patial.mainmenu') --}}
-<div class="container flex-1 mx-auto pb-8">
-	<div class="mt-6 p-4 bg-white border-t border-b sm:border sm:shadow">
+<div class="container flex-1 mx-auto pb-8 product">
+	<div class="mt-6 bg-white border-t border-b sm:border sm:shadow">
 		<div class="sm:flex -mx-2">
+			@if($product->hasMedia('gallery'))
 			<div class="sm:w-1/3 p-2">
-				@if($product->hasMedia('title'))
-				<img src="{{ $product->getFirstMediaUrl('title', 'product') }}" alt="Image of {{ $product['name'] }}">
-				@endif
+				<div class="p-2">
+					<img src="{{ $product->getFirstMediaUrl('gallery', 'thumb') }}" alt="Image of {{ $product['name'] }}">
+				</div>
 			</div>
-			<div class="sm:w-1/3 p-2">
+			@endif
+			<div class="sm:flex-1 p-2">
 				<div class="mx-4">
 					<h1 class="mb-4">{{ $product->name }}</h1>
-					<p class="mb-2">{{ $product->description }}</p>
+					<p class="mb-2">{!! $product->description !!}</p>
 					<ul class="mb-4">
 						@foreach($product->features as $feature)
 						<li>{{ $feature->name }}</li>
@@ -30,8 +32,8 @@
 					</ul>
 				</div>
 			</div>
-			<div class="sm:w-1/3 p-2 pt-8">
-				<div class="flex flex-col ml-4">
+			<div class="sm:w-1/4 p-2 pt-8">
+				<div class="flex flex-col">
 					<form action="/api/cart" method="post" class="mt-6" @submit.prevent="addToCart()">
 						<input type="hidden" value="" name="sku" v-model="product.sku">
 						<div class="font-bold text-4xl mb-2">
@@ -58,11 +60,14 @@
 							</label>
 						</div>
 						@endif
-						<div class="flex flex-wrap items-center">
-							<div class="w-1/2">
-								QTY <input name="qty" type="number" v-model="product.qty" class="shadow appearance-none border rounded py-2 px-3 text-grey-darker w-16">
+						<div class="flex items-center">
+							<div class="w-1/3">
+								<div class="flex flex-col">
+									<div>QTY</div>
+									<input name="qty" type="number" v-model="product.qty" class="shadow appearance-none border rounded py-2 px-3 text-grey-darker w-16">
+								</div>
 							</div>
-							<div class="w-1/2">
+							<div class="flex-1">
 								<button class="bg-max-secondary text-white whitespace-no-wrap font-bold py-4 px-4 border-b-4 hover:border-b-2 hover:border-t-2 border-teal-darker hover:border-max-secondary rounded">
 									<div class="inline-block w-6 mr-1">
 										<transition name="component-bounce" mode="out-in">
@@ -114,22 +119,22 @@
 		<div class="w-1/3 p-2">
 			<div class="flex flex-wrap bg-white border shadow p-4">
 				<div class="w-1/3">
-					@if($catproduct->hasMedia('title'))
+					@if($catproduct->hasMedia('gallery'))
 					<a href="/categories/{{ $catproduct->path }}/{{ $catproduct->alias }}" class="no-underline">
-						<img src="{{ $catproduct->getFirstMediaUrl('title', 'product') }}" alt="Image of {{ $catproduct['name'] }}">
+						<img src="{{ $catproduct->getFirstMediaUrl('gallery', 'thumb') }}" alt="Image of {{ $catproduct['name'] }}">
 					</a>
 					@endif
 				</div>
 				<div class="w-2/3">
 					<div class="mx-4 flex flex-col">
-						<a href="/categories/{{ $catproduct->path }}/{{ $catproduct->alias }}" class="no-underline">
+						<a href="/categories/{{ $catproduct->path }}/{{ $catproduct->alias }}" class="no-underline text-max-secondary">
 							<h3 class="mb-2">{{$catproduct->name}}</h3>
 						</a>
 						<div class="flex-1 text-max-primary font-bold mb-2">
 							@money($catproduct->price,'ZAR')
 						</div>
 						<div class="">
-							<a href="/categories/{{ $catproduct->path }}/{{ $catproduct->alias }}" class="no-underline">
+							<a href="/categories/{{ $catproduct->path }}/{{ $catproduct->alias }}" class="no-underline text-max-secondary">
 								more&hellip;
 							</a>
 						</div>
