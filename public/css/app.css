@@ -933,15 +933,14 @@ table {
   }
 }
 
-.category p,
-.category ul,
-.product p,
-.product ul {
+.description p,
+.description ul:not(.tabs-component-tabs) {
   margin-bottom: 16px;
   margin-bottom: 1rem;
 }
 
-.category li {
+.description li {
+  font-weight: 500;
   margin-bottom: 8px;
   margin-bottom: .5rem;
 }

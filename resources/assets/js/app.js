@@ -22,6 +22,7 @@ import { faSquare } from '@fortawesome/pro-regular-svg-icons/faSquare'
 import { faCheckSquare } from '@fortawesome/pro-regular-svg-icons/faCheckSquare'
 import { faAngleRight } from '@fortawesome/pro-regular-svg-icons/faAngleRight'
 import { faCheck } from '@fortawesome/pro-regular-svg-icons/faCheck'
+import { faFilePdf } from '@fortawesome/pro-regular-svg-icons/faFilePdf'
 import { Carousel, Slide } from 'vue-carousel';
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -60,6 +61,7 @@ import {Tabs, Tab} from 'vue-tabs-component';
             faCheckSquare: faCheckSquare,
             faAngleRight: faAngleRight,
             faCheck: faCheck,
+            faFilePdf: faFilePdf,
         },
         user: window.user ? window.user : false,
         showAskQuestion: false,

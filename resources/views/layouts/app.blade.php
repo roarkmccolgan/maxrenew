@@ -10,7 +10,7 @@
     
 @show
 </head>
-<body class="bg-grey-lighter font-sans antialiased text-grey-darkest leading-tight h-full">
+<body class="bg-grey-lightest font-sans antialiased leading-normal text-grey-darkest h-full">
 <div id="app" class="flex flex-col h-full">
     @include('partial.pagetop')
     @include('partial.search')
@@ -19,7 +19,6 @@
 </div>
 @stack('scripts')
 @include('partial.jsvars')
-<script src="//maps.googleapis.com/maps/api/js?key=AIzaSyDe0rHvuTf_URjbbhTL88oyhQb8sVj0dNA&libraries=places"></script>
 <script src="{{ mix('js/app.js') }}"></script>
 
 </body>

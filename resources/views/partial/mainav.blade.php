@@ -9,9 +9,9 @@
 						<div class="px-4">
 							<div class="text-sm uppercase text-grey pb-4 border-b mb-2">{{$category->name}}</div>
 							@foreach($category['products'] as $product)
-								<a href="/categories/{{ $category->alias }}/{{ $product->alias }}" class="flex items-center py-1 px-2 font-bold text-max-primary hover:text-max-secondary hover:bg-grey-lighter whitespace-no-wrap no-underline">
+								<a href="/categories/{{ $category->alias }}/{{ $product->alias }}" class="flex items-center font-bold text-max-primary hover:text-max-secondary hover:bg-grey-lighter whitespace-no-wrap no-underline">
 									@if($product->hasMedia('title'))
-									<img src="{{ $product->getFirstMediaURL('title','thumb') }}" alt="{{ $product->name }}" class="block mr-1 w-10 h-10">
+									<img src="{{ $product->getFirstMediaURL('title','micro') }}" alt="{{ $product->name }}" class="block mr-1 w-10 h-10">
 									@endif
 									{{ $product->name }}
 								</a>
@@ -23,9 +23,9 @@
 								<div class="text-sm uppercase text-grey pb-4 border-b mb-2">{{$subCategory->name}}</div>
 								@if(!count($subCategory->allSubCategories))
 									@foreach($subCategory['products'] as $product)
-										<a href="/categories/{{ $category->alias }}/{{ $product->alias }}" class="flex items-center py-1 px-2 font-bold text-max-primary hover:text-max-secondary hover:bg-grey-lighter whitespace-no-wrap no-underline">
+										<a href="/categories/{{ $category->alias }}/{{ $product->alias }}" class="flex items-center font-bold text-max-primary hover:text-max-secondary hover:bg-grey-lighter whitespace-no-wrap no-underline">
 											@if($product->hasMedia('title'))
-											<img src="{{ $product->getFirstMediaURL('title','thumb') }}" alt="{{ $product->name }}" class="block mr-1 w-10 h-10">
+											<img src="{{ $product->getFirstMediaURL('title','micro') }}" alt="{{ $product->name }}" class="block mr-1 w-10 h-10">
 											@endif
 											{{ $product->name }}
 										</a>
@@ -35,9 +35,9 @@
 									<div class="flex flex-wrap -mx-4" title="{{ $subSubCategory->name }}">
 										<div class="px-4">
 											@foreach($subSubCategory['products'] as $product)
-												<a href="/categories/{{ $category->alias }}/{{ $product->alias }}" class="flex items-center py-1 px-2 font-bold text-max-primary hover:text-max-secondary hover:bg-grey-lighter whitespace-no-wrap no-underline">
+												<a href="/categories/{{ $category->alias }}/{{ $product->alias }}" class="flex items-center font-bold text-max-primary hover:text-max-secondary hover:bg-grey-lighter whitespace-no-wrap no-underline">
 													@if($product->hasMedia('title'))
-													<img src="{{ $product->getFirstMediaURL('title','thumb') }}" alt="{{ $product->name }}" class="block mr-1 w-10 h-10">
+													<img src="{{ $product->getFirstMediaURL('title','micro') }}" alt="{{ $product->name }}" class="block mr-1 w-10 h-10">
 													@endif
 													{{ $product->name }}
 												</a>

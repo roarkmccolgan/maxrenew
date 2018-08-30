@@ -2157,6 +2157,42 @@ exports.svgPathData = svgPathData;
 
 /***/ }),
 
+/***/ "./node_modules/@fortawesome/pro-regular-svg-icons/faFilePdf.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, '__esModule', { value: true });
+var prefix = 'far';
+var iconName = 'file-pdf';
+var width = 384;
+var height = 512;
+var ligatures = [];
+var unicode = 'f1c1';
+var svgPathData = 'M369.9 97.9L286 14C277 5 264.8-.1 252.1-.1H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V131.9c0-12.7-5.1-25-14.1-34zM332.1 128H256V51.9l76.1 76.1zM48 464V48h160v104c0 13.3 10.7 24 24 24h104v288H48zm250.2-143.7c-12.2-12-47-8.7-64.4-6.5-17.2-10.5-28.7-25-36.8-46.3 3.9-16.1 10.1-40.6 5.4-56-4.2-26.2-37.8-23.6-42.6-5.9-4.4 16.1-.4 38.5 7 67.1-10 23.9-24.9 56-35.4 74.4-20 10.3-47 26.2-51 46.2-3.3 15.8 26 55.2 76.1-31.2 22.4-7.4 46.8-16.5 68.4-20.1 18.9 10.2 41 17 55.8 17 25.5 0 28-28.2 17.5-38.7zm-198.1 77.8c5.1-13.7 24.5-29.5 30.4-35-19 30.3-30.4 35.7-30.4 35zm81.6-190.6c7.4 0 6.7 32.1 1.8 40.8-4.4-13.9-4.3-40.8-1.8-40.8zm-24.4 136.6c9.7-16.9 18-37 24.7-54.7 8.3 15.1 18.9 27.2 30.1 35.5-20.8 4.3-38.9 13.1-54.8 19.2zm131.6-5s-5 6-37.3-7.8c35.1-2.6 40.9 5.4 37.3 7.8z';
+
+exports.definition = {
+  prefix: prefix,
+  iconName: iconName,
+  icon: [
+    width,
+    height,
+    ligatures,
+    unicode,
+    svgPathData
+  ]};
+
+exports.faFilePdf = exports.definition;
+exports.prefix = prefix;
+exports.iconName = iconName;
+exports.width = width;
+exports.height = height;
+exports.ligatures = ligatures;
+exports.unicode = unicode;
+exports.svgPathData = svgPathData;
+
+/***/ }),
+
 /***/ "./node_modules/@fortawesome/pro-regular-svg-icons/faMousePointer.js":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -12493,7 +12529,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             icons: {
                 busy: __WEBPACK_IMPORTED_MODULE_1__fortawesome_pro_regular_svg_icons_faSync__["faSync"]
             },
-            showAskQuestion: false,
+            showAskQuestion: this.questions.length ? false : true,
             question_form: {
                 busy: false,
                 fields: ['name', 'email', 'comment', 'product_id'],
@@ -61811,12 +61847,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__fortawesome_pro_regular_svg_icons_faAngleRight___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__fortawesome_pro_regular_svg_icons_faAngleRight__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__fortawesome_pro_regular_svg_icons_faCheck__ = __webpack_require__("./node_modules/@fortawesome/pro-regular-svg-icons/faCheck.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__fortawesome_pro_regular_svg_icons_faCheck___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__fortawesome_pro_regular_svg_icons_faCheck__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_vue_carousel__ = __webpack_require__("./node_modules/vue-carousel/dist/vue-carousel.min.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_vue_carousel__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__fortawesome_vue_fontawesome__ = __webpack_require__("./node_modules/@fortawesome/vue-fontawesome/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__fortawesome_vue_fontawesome__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_vue_tabs_component__ = __webpack_require__("./node_modules/vue-tabs-component/dist/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_vue_tabs_component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_vue_tabs_component__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__fortawesome_pro_regular_svg_icons_faFilePdf__ = __webpack_require__("./node_modules/@fortawesome/pro-regular-svg-icons/faFilePdf.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__fortawesome_pro_regular_svg_icons_faFilePdf___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__fortawesome_pro_regular_svg_icons_faFilePdf__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_vue_carousel__ = __webpack_require__("./node_modules/vue-carousel/dist/vue-carousel.min.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_vue_carousel___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_vue_carousel__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__fortawesome_vue_fontawesome__ = __webpack_require__("./node_modules/@fortawesome/vue-fontawesome/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__fortawesome_vue_fontawesome___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__fortawesome_vue_fontawesome__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_vue_tabs_component__ = __webpack_require__("./node_modules/vue-tabs-component/dist/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_vue_tabs_component___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_vue_tabs_component__);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -61827,6 +61865,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 __webpack_require__("./resources/assets/js/bootstrap.js");
 
 window.Vue = __webpack_require__("./node_modules/vue/dist/vue.common.js");
+
 
 
 
@@ -61862,8 +61901,8 @@ Vue.component('example-component', __webpack_require__("./resources/assets/js/co
 var CartComponent = __webpack_require__("./resources/assets/js/components/CartComponent.vue");
 var QuestionComponent = __webpack_require__("./resources/assets/js/components/QuestionComponent.vue");
 var ContactComponent = __webpack_require__("./resources/assets/js/components/ContactComponent.vue");
-Vue.component('tabs', __WEBPACK_IMPORTED_MODULE_14_vue_tabs_component__["Tabs"]);
-Vue.component('tab', __WEBPACK_IMPORTED_MODULE_14_vue_tabs_component__["Tab"]);
+Vue.component('tabs', __WEBPACK_IMPORTED_MODULE_15_vue_tabs_component__["Tabs"]);
+Vue.component('tab', __WEBPACK_IMPORTED_MODULE_15_vue_tabs_component__["Tab"]);
 
 var home = new Vue({
     el: '#app',
@@ -61878,7 +61917,8 @@ var home = new Vue({
             faSquare: __WEBPACK_IMPORTED_MODULE_8__fortawesome_pro_regular_svg_icons_faSquare__["faSquare"],
             faCheckSquare: __WEBPACK_IMPORTED_MODULE_9__fortawesome_pro_regular_svg_icons_faCheckSquare__["faCheckSquare"],
             faAngleRight: __WEBPACK_IMPORTED_MODULE_10__fortawesome_pro_regular_svg_icons_faAngleRight__["faAngleRight"],
-            faCheck: __WEBPACK_IMPORTED_MODULE_11__fortawesome_pro_regular_svg_icons_faCheck__["faCheck"]
+            faCheck: __WEBPACK_IMPORTED_MODULE_11__fortawesome_pro_regular_svg_icons_faCheck__["faCheck"],
+            faFilePdf: __WEBPACK_IMPORTED_MODULE_12__fortawesome_pro_regular_svg_icons_faFilePdf__["faFilePdf"]
         },
         user: window.user ? window.user : false,
         showAskQuestion: false,
@@ -62024,12 +62064,12 @@ var home = new Vue({
         }
     },
     components: {
-        FontAwesomeIcon: __WEBPACK_IMPORTED_MODULE_13__fortawesome_vue_fontawesome__["FontAwesomeIcon"],
+        FontAwesomeIcon: __WEBPACK_IMPORTED_MODULE_14__fortawesome_vue_fontawesome__["FontAwesomeIcon"],
         CartComponent: CartComponent,
         ContactComponent: ContactComponent,
         QuestionComponent: QuestionComponent,
-        Carousel: __WEBPACK_IMPORTED_MODULE_12_vue_carousel__["Carousel"],
-        Slide: __WEBPACK_IMPORTED_MODULE_12_vue_carousel__["Slide"]
+        Carousel: __WEBPACK_IMPORTED_MODULE_13_vue_carousel__["Carousel"],
+        Slide: __WEBPACK_IMPORTED_MODULE_13_vue_carousel__["Slide"]
     },
     methods: {
         clearCart: function clearCart() {

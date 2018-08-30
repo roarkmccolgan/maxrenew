@@ -314,3 +314,6 @@
 </div>
 @include('partial.footer')
 @endsection
+@push('scripts')
+    <script src="//maps.googleapis.com/maps/api/js?key=AIzaSyDe0rHvuTf_URjbbhTL88oyhQb8sVj0dNA&libraries=places"></script>
+@endpush

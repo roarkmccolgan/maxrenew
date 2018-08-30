@@ -4,11 +4,11 @@
 @tailwind preflight;
 @tailwind components;
 
-.category p, .category ul, .product p, .product ul{
+.description p, .description ul:not(.tabs-component-tabs){
 	@apply .mb-4;
 }
-.category li{
-	@apply .mb-2;
+.description li{
+	@apply .font-medium .mb-2;
 }
 
 .ais-highlight em{

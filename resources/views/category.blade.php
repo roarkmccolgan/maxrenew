@@ -17,7 +17,7 @@
 			<img src="{{ $category->getFirstMediaUrl('title', 'category') }}" alt="Image of {{ $category['name'] }}">	
 		</div>
 		@endif
-		<div class="sm:flex-1 px-2">
+		<div class="description sm:flex-1 px-2">
 			<h1 class="mb-2">{{ $category['name'] }}</h1>
 			{!! $category['description'] !!}
 		</div>
@@ -31,17 +31,17 @@
 			<div class="flex flex-wrap bg-white border shadow p-4">
 				<div class="w-1/3">
 					<a href="{{'/categories/'.$category['alias'].'/'.$product->alias}}" class="no-underline">
-						@if($product->hasMedia('title'))
-						<img src="{{ $product->getFirstMediaUrl('title', 'thumb') }}" alt="Photo of {{ $product->alias }}">
+						@if($product->hasMedia('gallery'))
+						<img src="{{ $product->getFirstMediaUrl('gallery', 'thumb') }}" alt="Photo of {{ $product->alias }}">
 						@endif
 					</a>
 				</div>
 				<div class="w-2/3">
-					<div class="mx-4">
+					<div class="mx-4 description">
 						<a href="{{'/categories/'.$category['alias'].'/'.$product->alias}}" class="text-max-primary no-underline hover:text-max-secondary">
 							<h3 class="mb-2">{{$product['name']}}</h3>
 						</a>
-						<p class="mb-2">{{ str_limit($product['description'],80)}}</p>
+						{!! strpos ( $product->description , "</p>" ) !== false ? substr ( $product->description , 0, strpos ( $product->description , "</p>" )+4 ) : str_limit($product->description,80) !!}
 						<ul class="mb-4">
 							@foreach($product['features'] as $feature)
 								<li>{{ $feature->name }}</li>

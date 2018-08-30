@@ -16,19 +16,26 @@ class Product extends Model implements HasMedia
         $this
             ->addMediaCollection('content');
         $this
-            ->addMediaCollection('gallery')
+            ->addMediaCollection('title')
             ->registerMediaConversions(function (Media $media) {
-            $this
-                ->addMediaConversion('thumb')
-                ->width(400)
-                ->height(400);
+                $this
+                    ->addMediaConversion('thumb')
+                    ->width(400)
+                    ->height(400);
+                $this
+                    ->addMediaConversion('micro')
+                    ->fit('crop', 80, 80);
             });
         $this
-            ->addMediaCollection('application');
+            ->addMediaCollection('gallery')
+            ->registerMediaConversions(function (Media $media) {
+                $this
+                    ->addMediaConversion('thumb')
+                    ->width(400)
+                    ->height(400);
+            });
         $this
             ->addMediaCollection('technical');
-        $this
-            ->addMediaCollection('specifications');
     }
 
 	public function getPathAttribute($value)
@@ -78,6 +85,10 @@ class Product extends Model implements HasMedia
     }
 
     public function questions(){
-    	return $this->hasMany('App\QA');
+        return $this->hasMany('App\QA');
+    }
+
+    public function brand(){
+    	return $this->belongsTo('App\Brand');
     }
 }

@@ -89,7 +89,7 @@
             icons: {
                 busy: faSync
             },
-            showAskQuestion: false,
+            showAskQuestion: this.questions.length ? false:true,
             question_form: {
                 busy: false,
                 fields: [

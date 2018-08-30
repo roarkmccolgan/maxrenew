@@ -11,30 +11,45 @@
 @endsection
 @section('body')
 {{-- @includeWhen($pagetype == 'content', 'patial.mainmenu') --}}
-<div class="container flex-1 mx-auto pb-8 product">
-	<div class="mt-6 bg-white border-t border-b sm:border sm:shadow">
+<div class="container flex-1 mx-auto pb-8">
+
+	<div class="my-4">
+		<div class="flex text-sm">
+			<span><a class="text-grey-darker hover:text-max-secondary" href="{{ url('/') }}">Home</a></span>
+			<span class="block mx-2 text-center">></span>
+			<span><a class="text-grey-darker hover:text-max-secondary" href="{{ url('categories/'.$category->alias) }}">{{ $category->name }}</a></span><span class="block mx-2 text-center">></span>
+			<span class="text-grey-dark">{{ $product->name }}</span>
+		</div>
+	</div>
+	<div class="mt-3 bg-white sm:shadow">
 		<div class="sm:flex -mx-2">
 			@if($product->hasMedia('gallery'))
-			<div class="sm:w-1/3 p-2">
-				<div class="p-2">
+			<div class="sm:w-1/3 p-2 mt-8">
+				<div class="sm:w-5/6 sm:mx-auto">
 					<img src="{{ $product->getFirstMediaUrl('gallery', 'thumb') }}" alt="Image of {{ $product['name'] }}">
 				</div>
 			</div>
 			@endif
 			<div class="sm:flex-1 p-2">
-				<div class="mx-4">
-					<h1 class="mb-4">{{ $product->name }}</h1>
-					<p class="mb-2">{!! $product->description !!}</p>
-					<ul class="mb-4">
-						@foreach($product->features as $feature)
-						<li>{{ $feature->name }}</li>
-						@endforeach
-					</ul>
+				<div class="m-8">
+					<h1 class="text-4xl leading-none text-max-secondary">{{ $product->name }}</h1>
+					<p class="font-medium text-grey-dark mb-10">{{ $product->strapline }}</p>
+
+					<div class="description">
+						{!! $product->description !!}
+
+						<ul class="mb-4">
+							@foreach($product->features as $feature)
+							<li>{{ $feature->name }}</li>
+							@endforeach
+						</ul>
+					</div>
+						
 				</div>
 			</div>
 			<div class="sm:w-1/4 p-2 pt-8">
 				<div class="flex flex-col">
-					<form action="/api/cart" method="post" class="mt-6" @submit.prevent="addToCart()">
+					<form action="/api/cart" method="post" class="mt-1" @submit.prevent="addToCart()">
 						<input type="hidden" value="" name="sku" v-model="product.sku">
 						<div class="font-bold text-4xl mb-2">
 							@if(count($product->products))
@@ -42,7 +57,7 @@
 								Kit only price
 							</div>
 							@endif
-							@money($product->price,'ZAR')
+							<span class="font-black">@money($product->price,'ZAR')</span>
 							<span class="text-sm font-medium text-grey-dark">
 								inc.Vat
 							</span>
@@ -60,8 +75,9 @@
 							</label>
 						</div>
 						@endif
-						<div class="flex items-center">
-							<div class="w-1/3">
+						<div class="border-t my-4 w-5/6"></div>
+						<div class="flex items-center mr-2">
+							<div class="mr-2">
 								<div class="flex flex-col">
 									<div>QTY</div>
 									<input name="qty" type="number" v-model="product.qty" class="shadow appearance-none border rounded py-2 px-3 text-grey-darker w-16">
@@ -107,6 +123,18 @@
 						@endforeach
 					</tbody>
 				</table>
+			</tab>
+			@endif
+			@if($product->hasMedia('technical'))
+			<tab name="Downloads">
+				<ul class="list-reset">
+					@foreach($product->getMedia('technical') as $technical)
+					<li class="flex items-center py-2">
+						<div class="mr-2"><font-awesome-icon :icon="icons.faFilePdf" class=""></font-awesome-icon></div>
+						<a class="font-semibold text-grey-darker" href="{{ $technical->getUrl() }}" target="_blank" alt="{{ $technical->name }}" >{{ $technical->name }}</a>
+					</li>
+					@endforeach
+				</ul>
 			</tab>
 			@endif
 		</tabs>

@@ -116,6 +116,16 @@ class DataBaseController extends Controller
 			}
 			if($request->has('gallery')) {
 				$product->clearMediaCollection('gallery');
+				$product->clearMediaCollection('title');
+				$first = collect($request->input('gallery'))->first();
+				$title = str_replace("dl=0","raw=1",$first);
+				$parts = parse_url($title); 
+				$slug_name = str_replace(['%20','?raw=1'],['-',''],basename($parts['path']));
+				Log::info($slug_name);
+				$file_name = str_replace(['%20','-','_','.jpg','.JPG','.JPEG','.png','.png'],[' ',' ',' ','','','','',''],basename($parts['path']));
+				Log::info($file_name);
+				$product->addMediaFromUrl($title)->usingFileName($slug_name)->usingName($file_name)->toMediaCollection('title');
+				
 				foreach ($request->input('gallery') as $gallery) {
 					$gallery = str_replace("dl=0","raw=1",$gallery);
 					$parts = parse_url($gallery); 
